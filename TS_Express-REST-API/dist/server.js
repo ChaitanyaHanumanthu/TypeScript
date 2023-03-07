@@ -51,7 +51,7 @@ db_config_1.default
     .catch((err) => {
     console.log("Error at db connection", err);
 });
-db_config_1.default.sync({ force: true });
+db_config_1.default.sync();
 // body parser
 app.use(express_1.default.json());
 // error handlers

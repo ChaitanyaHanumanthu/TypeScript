@@ -7,20 +7,27 @@ import express from "express";
 const userApp: IRouter = Router();
 
 // Importing the controllers from controller
-import { register } from "../controllers/authenticate.controller";
+import {
+  deleteUser,
+  getUserById,
+  login,
+  modifyUser,
+  register,
+} from "../controllers/authenticate.controller";
+import { verifyToken } from "../middlewares/verifytoken";
 
 // body parser
 userApp.use(express.json());
 
 userApp.post("/register", register);
 
-// testApp.post("/login", login);
+userApp.get("/user/:name", verifyToken, getUserById);
 
-// testApp.get("/user/:username", userById);
+userApp.post("/login", login);
 
-// testApp.put("/user/:username", modifyUser);
+userApp.put("/modify-user/:name", modifyUser);
 
-// testApp.delete("user/:username", deleteUser);
+userApp.delete("/delete-user/:name", verifyToken, deleteUser);
 
 // exporting the mini app
 export default userApp;

@@ -34,7 +34,7 @@ sequelize
   .catch((err) => {
     console.log("Error at db connection", err);
   });
-sequelize.sync({ force: true });
+sequelize.sync();
 
 // body parser
 app.use(express.json());

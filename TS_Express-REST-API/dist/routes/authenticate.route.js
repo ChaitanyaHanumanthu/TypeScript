@@ -10,12 +10,13 @@ const express_2 = __importDefault(require("express"));
 const userApp = (0, express_1.Router)();
 // Importing the controllers from controller
 const authenticate_controller_1 = require("../controllers/authenticate.controller");
+const verifytoken_1 = require("../middlewares/verifytoken");
 // body parser
 userApp.use(express_2.default.json());
 userApp.post("/register", authenticate_controller_1.register);
-// testApp.post("/login", login);
-// testApp.get("/user/:username", userById);
-// testApp.put("/user/:username", modifyUser);
-// testApp.delete("user/:username", deleteUser);
+userApp.get("/user/:name", verifytoken_1.verifyToken, authenticate_controller_1.getUserById);
+userApp.post("/login", authenticate_controller_1.login);
+userApp.put("/modify-user/:name", authenticate_controller_1.modifyUser);
+userApp.delete("/delete-user/:name", verifytoken_1.verifyToken, authenticate_controller_1.deleteUser);
 // exporting the mini app
 exports.default = userApp;

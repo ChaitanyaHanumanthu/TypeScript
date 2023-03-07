@@ -11,18 +11,17 @@ exports.Users = db_config_1.default.define("users", {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
-    Id: {
-        type: sequelize_1.DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
     email: {
         type: sequelize_1.DataTypes.STRING,
-        allowNull: false,
+        primaryKey: true,
     },
     password: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
+    },
+    status: {
+        type: sequelize_1.DataTypes.BOOLEAN,
+        defaultValue: true,
     },
 }, {
     createdAt: false,
