@@ -38,3 +38,4 @@ class caseMaker extends batteryMaker {
 
 let Mobile = new caseMaker();
 console.log(Mobile.makingOfCase(), Mobile.makingOfBattery());
+ 
